@@ -35,4 +35,15 @@ class User < ApplicationRecord
     end.compact
   end
 
+  def confirm_friend(user)
+    friendship = inverse_friendships.find do |friendship|
+      friendship.user == user
+    end
+    friendship.confirmed = true
+    friendship.save
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
 end
