@@ -32,6 +32,14 @@ RSpec.describe User, type: :model do
       expect(user1.friends).to_not be_empty
     end
 
+    it '#pending_friends -> not empty array' do
+      expect(user1.pending_friends).to_not be_empty
+    end
+
+    it '#pending_friends -> be empty' do
+      expect(user2.pending_friends).to be_empty
+    end
+
     it '#friend_requests -> not empty' do
       expect(user2.friend_requests).to_not be_empty
     end
