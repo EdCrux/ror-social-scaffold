@@ -1,27 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user1){
+  let!(:user1) do
     User.create!(
       email: 'fake@email.com',
       password: 'password',
       name: 'fake_test'
     )
-  }
+  end
 
-  let!(:user2){
+  let!(:user2) do
     User.create!(
       email: 'test@email.com',
       password: 'test123',
       name: 'friend_test'
     )
-  }
-  let!(:friendship){
+  end
+  let!(:friendship) do
     Friendship.create!(
       user: user1,
-      friend: user2,
+      friend: user2
     )
-  }
+  end
   describe 'Actions for users' do
     it '#friends -> empty array' do
       expect(user1.friends).to be_empty
@@ -55,7 +55,6 @@ RSpec.describe User, type: :model do
     it '#friend? -> false' do
       expect(user2.friend?(user1)).to be(false)
     end
-
 
     it '#friend? -> true' do
       user2.confirm_friend(user1)
