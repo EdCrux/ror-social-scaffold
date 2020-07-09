@@ -23,6 +23,16 @@ RSpec.describe User, type: :model do
     )
   }
   describe 'Actions for users' do
+    it '#friends -> empty array' do
+      expect(user2.friends).to be_empty
+    end
+
+    it '#friends -> not empty array' do
+      user2.confirm_friend(user1)
+      expect(user1.friends).to_not be_empty
+    end
+
+
     it '#confirm_friend' do
       expect(user2.confirm_friend(user1)).to be(true)
     end
@@ -30,8 +40,8 @@ RSpec.describe User, type: :model do
     it '#friend? -> false' do
       expect(user2.friend?(user1)).to be(false)
     end
-    
-    
+
+
     it '#friend? -> true' do
       user2.confirm_friend(user1)
       expect(user1.friend?(user2)).to be(true)
