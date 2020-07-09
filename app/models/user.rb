@@ -33,6 +33,7 @@ class User < ApplicationRecord
     inverse_friendships.map do |friendship|
       friendship.user if !friendship.confirmed
     end.compact
+
   end
 
   def confirm_friend(user)
