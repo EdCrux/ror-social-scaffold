@@ -21,11 +21,7 @@
       <%= logged_in_buttons %>
     </nav>
     <%= display_notices %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
+    <%= display_alerts %>
     <main class="main">
       <%= yield %>
     </main>

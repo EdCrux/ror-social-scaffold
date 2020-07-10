@@ -32,4 +32,12 @@ module ApplicationHelper
     end      
   end
 
+  def display_alerts
+    if alert.present?
+      content_tag(:div, class: 'alert') do
+        content_tag(:p, alert)
+      end
+    end
+  end
+
 end
