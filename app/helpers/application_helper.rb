@@ -40,4 +40,12 @@ module ApplicationHelper
     end
   end
 
+  def confirm_friendship_helper(user)
+    friendship = Friendship.find_by(user: current_user, friend: user)
+    content_tag(:p, friendship) 
+    if friendship
+      link_to('Accept invitation', controller: friendship_path(id: friendship.id), method: :update)
+    end
+  end
+
 end

@@ -5,8 +5,13 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          <% unless current_user == user || current_user.friend?(user) %>
-          <%= link_to 'Send frienship invitation', friendships_path(friend_id: user.id), method: :post %>
+          <% if current_user.pending_friends?(user) %>
+            <span>You already sent an invitation</span>
+          <% elsif current_user.friend_requests?(user)%>
+            <%# confirm_friendship_helper(user) %>
+            <%= link_to 'Accept invitation', :controller => :friendships, :action => :confirm_friendship(user) %>
+          <% elsif !(current_user == user || current_user.friend?(user)) %>
+            <%= link_to 'Send friendship invitation', friendships_path(friend_id: user.id), method: :post %>
           <% end %>
         </span>
       </li>
