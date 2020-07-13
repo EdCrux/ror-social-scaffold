@@ -39,4 +39,14 @@ module ApplicationHelper
       end
     end
   end
+
+  def invitation_action_links(user)
+    if current_user.pending_friends?(user)
+      content_tag(:span, 'You already sent an invitation')
+    elsif current_user.friend_requests?(user)
+      link_to 'Accept invitation', user_path(user), method: :patch
+    elsif !(current_user == user || current_user.friend?(user))
+      link_to 'Send friendship invitation', friendships_path(friend_id: user.id), method: :post
+    end
+  end
 end
