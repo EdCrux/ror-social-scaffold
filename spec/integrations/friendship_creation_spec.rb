@@ -14,22 +14,22 @@ RSpec.feature "Friendship creation", type: :feature do
       click_link('All users')
 
       click_link('Send friendship invitation')
-      click_link('Log out')
+      click_link('Sign out')
       within('#new_user') do
         fill_in 'user_email', with: 'other@test.com'
         fill_in 'user_password', with: '123456'
       end
       click_button 'commit'
-      click_link('See Requests')
+      click_link('All users')
     end
 
     it 'displays the request' do
-      expect(page).to have_content 'Test1 wants to be your friend'
+      expect(page).to have_content 'Accept invitation'
     end
 
     it 'displays friendship' do
       click_link('Accept')
-      expect(page).to have_content 'Test1 is your friend'
+      expect(page).to have_content 'Is your friend'
     end
 
   end

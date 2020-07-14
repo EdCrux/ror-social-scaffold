@@ -1,26 +1,19 @@
 <h1>Friendships</h1>
-
+<br>
 <h3>Friends requests</h3>
 
 <% @friend_requests.each do |friend| %>
   <h5><%= friend.name %> wants to be your friend</h5>
 <% end  %>
-
+<br>
 <h3>Pending friends</h3>
-
 <% @pending_friends.each do |friend| %>
   <h5>You already invited <%= friend.name %></h5>
 <% end %>
-
+<br>
 <h3>Friends</h3>
-
 <% @friendships.each do |friend| %>
   <h5><%= friend.name %> is your friend</h5>
 <% end %>
 
 
-<h3>Friendship</h3>
-<% current_user.friendships.each do |friendship| %>
-  <p><%= friendship.friend.name %></p>
-  <p><%= friendship.confirmed %></p>
-<% end %>
