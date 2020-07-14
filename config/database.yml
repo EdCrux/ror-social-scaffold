@@ -17,7 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: ror_social_scaffold_development
   # username: socialnetwork
   # password: 'new'
   # host: localhost
