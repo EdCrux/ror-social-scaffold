@@ -16,6 +16,4 @@ class FriendshipsController < ApplicationController
       redirect_to users_path, alert: 'You cannot request this friendship'
     end
   end
-
-
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Friendship creation", type: :feature do
-  describe "friendship progress" do
+RSpec.feature 'Friendship creation', type: :feature do
+  describe 'friendship progress' do
     before :each do
       User.create!(name: 'Test1', email: 'this@test.com', password: '123456')
       User.create!(name: 'Test2', email: 'other@test.com', password: '123456')
@@ -31,6 +31,5 @@ RSpec.feature "Friendship creation", type: :feature do
       click_link('Accept')
       expect(page).to have_content 'Is your friend'
     end
-
   end
 end

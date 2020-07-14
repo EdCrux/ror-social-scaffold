@@ -17,5 +17,4 @@ RSpec.describe Post, type: :model do
       should have_many(:likes).dependent(:destroy)
     end
   end
-
-end  
+end

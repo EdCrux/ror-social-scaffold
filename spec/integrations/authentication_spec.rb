@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Authentications', type: :feature do
-
   describe 'the signin process' do
     before :each do
       User.create!(name: 'Test', email: 'this@test.com', password: '123456')

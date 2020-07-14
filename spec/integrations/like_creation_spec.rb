@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Like creation", type: :feature do
-  describe "Likes and dislikes process" do
+RSpec.feature 'Like creation', type: :feature do
+  describe 'Likes and dislikes process' do
     before :each do
       User.create(name: 'Kitpao', email: 'kit@pao.com', password: 'password')
       visit 'users/sign_in'

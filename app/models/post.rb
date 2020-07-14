@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def self.visible_posts(current_user)
-    friends_ids = current_user.friends.map {|friend| friend.id}
+    friends_ids = current_user.friends.map(&:id)
     friends_ids << current_user.id
     Post.all.where(user_id: friends_ids)
   end

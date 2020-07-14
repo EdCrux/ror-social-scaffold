@@ -25,18 +25,18 @@ module ApplicationHelper
   end
 
   def display_notices
-    if notice.present?
-      content_tag(:div, class: 'notice') do
-        content_tag(:p, notice)
-      end
+    return unless notice.present?
+
+    content_tag(:div, class: 'notice') do
+      content_tag(:p, notice)
     end
   end
 
   def display_alerts
-    if alert.present?
-      content_tag(:div, class: 'alert') do
-        content_tag(:p, alert)
-      end
+    return unless alert.present?
+
+    content_tag(:div, class: 'alert') do
+      content_tag(:p, alert)
     end
   end
 

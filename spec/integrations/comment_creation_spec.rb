@@ -14,7 +14,6 @@ RSpec.feature 'Post creation', type: :feature do
     click_button 'commit', value: 'Save'
     fill_in 'comment_content', with: 'This is the comment'
     click_button 'commit', value: 'Comment'
-    
   end
 
   it 'should have a content' do

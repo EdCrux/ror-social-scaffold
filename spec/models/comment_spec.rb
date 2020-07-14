@@ -16,5 +16,4 @@ RSpec.describe Comment, type: :model do
       should belong_to(:post)
     end
   end
-
-end  
+end

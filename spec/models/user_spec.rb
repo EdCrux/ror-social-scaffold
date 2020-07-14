@@ -1,40 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "validations" do
-    it "should validate name" do
+  describe 'validations' do
+    it 'should validate name' do
       should validate_presence_of(:name)
       should validate_length_of(:name)
-      .is_at_most(20).on(:create)
+        .is_at_most(20).on(:create)
     end
   end
 
-  describe "associations" do
-    it "should have many posts" do
+  describe 'associations' do
+    it 'should have many posts' do
       should have_many(:posts)
     end
 
-    it "should have many comments" do
+    it 'should have many comments' do
       should have_many(:comments).dependent(:destroy)
     end
 
-    it "should have many likes" do
+    it 'should have many likes' do
       should have_many(:likes).dependent(:destroy)
     end
 
-    it "should have many friendships" do
+    it 'should have many friendships' do
       should have_many(:friendships).dependent(:destroy)
     end
 
-    it "should have many inverse_friendships" do
+    it 'should have many inverse_friendships' do
       should have_many(:inverse_friendships)
-      .class_name('Friendship')
-      .with_foreign_key('friend_id')
-      .dependent(:destroy)
+        .class_name('Friendship')
+        .with_foreign_key('friend_id')
+        .dependent(:destroy)
     end
   end
 
-  describe "methods" do
+  describe 'methods' do
     let!(:user1) do
       User.create!(
         email: 'fake@email.com',
