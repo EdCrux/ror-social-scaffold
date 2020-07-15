@@ -28,7 +28,7 @@ class User < ApplicationRecord
     friendships.map do |friendship|
       pending_friend = friendship.friend
       confirm_friendship = pending_friend.friendships.map do |fnd|
-        true if fnd.friend.id == current_user.id
+        true if fnd.friend.id == id
       end
       pending_friend if confirm_friendship.empty?
     end.compact
@@ -36,11 +36,11 @@ class User < ApplicationRecord
 
   def friend_requests
     inverse_friendships.map do |pfnd|
-      friend_request = pfnd.friend
-      confirm_friendship = friend_request.friendships.map do |fnd|
-        true if fnd.friend.id == current_user.id
+      friend_request = pfnd.user
+      confirm_inverse_friendship = friend_request.inverse_friendships.map do |fnd|
+        true if fnd.friend.id == id
       end
-      friend_request if confirm_friendship.empty?
+      friend_request if confirm_inverse_friendship.empty?
     end.compact
   end
 
