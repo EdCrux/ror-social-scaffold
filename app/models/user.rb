@@ -48,8 +48,7 @@ class User < ApplicationRecord
     friendship = inverse_friendships.find do |fndship|
       fndship.user == user
     end
-    friendship.confirmed = true
-    friendship.save
+    friendships.build(friend: friendship.user).save
   end
 
   def reject_friend(user)
