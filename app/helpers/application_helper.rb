@@ -45,6 +45,7 @@ module ApplicationHelper
       content_tag(:span, 'You already sent an invitation')
     elsif current_user.friend_requests?(user)
       link_to 'Accept invitation', user_path(user), method: :patch
+      link_to 'Reject invitation', user_path(user), method: :delete
     elsif current_user.friend?(user)
       content_tag(:span, 'Is your friend')
     elsif current_user == user

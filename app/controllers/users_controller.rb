@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: 'Friend added'
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    current_user.reject_friend(@user)
+    redirect_to users_path, notice: 'Rejected invitation'
+  end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
