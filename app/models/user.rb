@@ -26,7 +26,11 @@ class User < ApplicationRecord
 
   def pending_friends
     friendships.map do |friendship|
-      friendship.friend unless friendship.confirmed
+      pending_friend = friendship.friend
+      confirm_friendship = pending_friend.friendships.map do |fnd|
+        true if fnd.friend.id == current_user.id
+      end
+      pending_friend if confirm_friendship.empty?  
     end.compact
   end
 
