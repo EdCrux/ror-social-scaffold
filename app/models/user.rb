@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: "Friendship"
+  has_many :friends, through: :confirmed_friendships
+
+
 
   def friends
     friendships.map do |friendship|
