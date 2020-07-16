@@ -26,11 +26,40 @@ RSpec.describe User, type: :model do
       should have_many(:friendships).dependent(:destroy)
     end
 
-    it 'should have many inverse_friendships' do
-      should have_many(:inverse_friendships)
+    it 'should have many confirmed_friendships' do
+      should have_many(:confirmed_friendships)
         .class_name('Friendship')
-        .with_foreign_key('friend_id')
-        .dependent(:destroy)
+        .conditions(confirmed: true)
+    end
+
+    it 'should have many friends through confirmed_friendships' do
+      should have_many(:friends).through(:confirmed_friendships)
+    end
+
+    it 'should have many pending_friendships' do
+      should have_many(:pending_friendships)
+        .conditions(confirmed: false)
+        .class_name('Friendship')
+        .with_foreign_key(:user_id)
+    end
+
+    it 'should have many pending_friends, through pending_friendships' do
+      should have_many(:pending_friends)
+        .through(:pending_friendships)
+        .source(:friend)
+    end
+
+    it 'should have many inverted_friendships' do
+      should have_many(:inverted_friendships)
+        .conditions(confirmed: false)
+        .class_name('Friendship')
+        .with_foreign_key(:friend_id)
+    end
+
+    it 'should have many friend_requests' do
+     should have_many(:friend_requests)
+       .through(:inverted_friendships)
+       .source(:user)
     end
   end
 
