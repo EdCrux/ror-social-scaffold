@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
 
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
@@ -21,20 +20,6 @@ class User < ApplicationRecord
 
   has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverted_friendships, source: :user
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find do |fndship|
-      fndship.user == user
-    end
-    friendships.build(friend: friendship.user).save
-  end
-
-  def reject_friend(user)
-    friendship = inverse_friendships.find do |fndship|
-      fndship.user == user
-    end
-    friendship.destroy
-  end
 
   def friend?(user)
     friends.include?(user)
