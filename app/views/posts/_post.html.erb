@@ -4,6 +4,8 @@
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
     <div class='post-liking'>
+      <small class='post-date'>Likes (<%= post.likes.count %>)</small>
+      <small class='post-date'>Comments (<%= post.comments.count %>)</small>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
       <%= like_or_dislike_btn(post) %>
     </div>

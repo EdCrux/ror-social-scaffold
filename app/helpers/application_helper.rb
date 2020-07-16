@@ -15,4 +15,44 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def logged_in_buttons
+    if current_user
+      link_to('Sign out', destroy_user_session_path, method: :delete)
+    else
+      link_to 'Sign in', user_session_path
+    end
+  end
+
+  def display_notices
+    return unless notice.present?
+
+    content_tag(:div, class: 'notice') do
+      content_tag(:p, notice)
+    end
+  end
+
+  def display_alerts
+    return unless alert.present?
+
+    content_tag(:div, class: 'alert') do
+      content_tag(:p, alert)
+    end
+  end
+
+  def invitation_action_links(user)
+    if current_user.pending_friends?(user)
+      content_tag(:span, 'You already sent an invitation')
+    elsif current_user.friend_requests?(user)
+      link_to('Accept invitation', user_path(user), method: :patch) +
+        content_tag(:span, ' | ') +
+        link_to('Reject invitation', user_path(user), method: :delete)
+    elsif current_user.friend?(user)
+      content_tag(:span, 'Is your friend')
+    elsif current_user == user
+      content_tag(:span, 'Your profile')
+    else
+      link_to 'Send friendship invitation', friendships_path(friend_id: user.id), method: :post
+    end
+  end
 end
