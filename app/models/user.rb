@@ -15,18 +15,6 @@ class User < ApplicationRecord
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: "Friendship"
   has_many :friends, through: :confirmed_friendships
 
-
-
-  def friends
-    friendships.map do |friendship|
-      current_friend = friendship.friend
-      confirm_friendship = current_friend.friendships.map do |fnd|
-        true if fnd.friend.id == id
-      end
-      current_friend unless confirm_friendship.empty?
-    end.compact
-  end
-
   def pending_friends
     friendships.map do |friendship|
       pending_friend = friendship.friend
