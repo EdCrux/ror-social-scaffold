@@ -57,55 +57,54 @@ RSpec.describe User, type: :model do
     end
 
     it 'should have many friend_requests' do
-     should have_many(:friend_requests)
-       .through(:inverted_friendships)
-       .source(:user)
+      should have_many(:friend_requests)
+        .through(:inverted_friendships)
+        .source(:user)
     end
   end
 
-  describe 'methods' do
-    let!(:sender) do
-      User.create!(
-        email: 'fake@email.com',
-        password: 'password',
-        name: 'fake_test'
-      )
+  let!(:sender) do
+    User.create!(
+      email: 'fake@email.com',
+      password: 'password',
+      name: 'fake_test'
+    )
+  end
+
+  let!(:receiver) do
+    User.create!(
+      email: 'test@email.com',
+      password: 'test123',
+      name: 'friend_test'
+    )
+  end
+
+  let!(:friendship) do
+    Friendship.create!(
+      user: sender,
+      friend: receiver
+    )
+  end
+
+  describe 'Actions for users' do
+    it '#friend? -> false' do
+      expect(receiver.friend?(sender)).to be(false)
     end
 
-    let!(:receiver) do
-      User.create!(
-        email: 'test@email.com',
-        password: 'test123',
-        name: 'friend_test'
-      )
+    it '#pending_friend? -> true' do
+      expect(sender.pending_friends?(receiver)).to be(true)
     end
-    let!(:friendship) do
-      Friendship.create!(
-        user: sender,
-        friend: receiver
-      )
+
+    it '#pending_friend? -> false' do
+      expect(receiver.pending_friends?(sender)).to be(false)
     end
-    describe 'Actions for users' do
 
-      it '#friend? -> false' do
-        expect(receiver.friend?(sender)).to be(false)
-      end
+    it '#friend_requests? -> true' do
+      expect(receiver.friend_requests?(sender)).to be(true)
+    end
 
-      it '#pending_friend? -> true' do
-        expect(sender.pending_friends?(receiver)).to be(true)
-      end
-
-      it '#pending_friend? -> false' do
-        expect(receiver.pending_friends?(sender)).to be(false)
-      end
-
-      it '#friend_requests? -> true' do
-        expect(receiver.friend_requests?(sender)).to be(true)
-      end
-
-      it '#friend_requests? -> false' do
-        expect(sender.friend_requests?(receiver)).to be(false)
-      end
+    it '#friend_requests? -> false' do
+      expect(sender.friend_requests?(receiver)).to be(false)
     end
   end
 end

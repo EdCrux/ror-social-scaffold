@@ -4,6 +4,8 @@ class Friendship < ApplicationRecord
 
   def self.confirm_friendship(user)
     friendship_found = find_by(user_id: user.id)
+    return false if friendship_found.nil?
+
     friendship_found.confirmed = true
     friendship_found.save
     current_user = friendship_found.friend
@@ -13,6 +15,8 @@ class Friendship < ApplicationRecord
 
   def self.reject_friendship(user)
     friendship_found = find_by(user_id: user.id)
+    return false if friendship_found.nil?
+
     friendship_found.destroy
   end
 end
