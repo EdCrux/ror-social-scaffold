@@ -15,15 +15,9 @@ class User < ApplicationRecord
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: "Friendship"
   has_many :friends, through: :confirmed_friendships
 
-  def pending_friends
-    friendships.map do |friendship|
-      pending_friend = friendship.friend
-      confirm_friendship = pending_friend.friendships.map do |fnd|
-        true if fnd.friend.id == id
-      end
-      pending_friend if confirm_friendship.empty?
-    end.compact
-  end
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: "Friendship", foreign_key: "user_id"
+  
+  has_many :pending_friends, through: :pending_friendships , source: :friend
 
   def friend_requests
     inverse_friendships.map do |pfnd|
