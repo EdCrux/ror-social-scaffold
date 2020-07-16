@@ -10,4 +10,9 @@ class Friendship < ApplicationRecord
     new_friendship = current_user.friendships.build(friend: user, confirmed: true)
     new_friendship.save
   end
+
+  def self.reject_friendship(user)
+    friendship_found = find_by(user_id: user.id)
+    friendship_found.destroy
+  end
 end

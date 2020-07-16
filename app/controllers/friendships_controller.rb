@@ -22,4 +22,10 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.inverted_friendships.confirm_friendship(@user)
     redirect_to users_path, notice: 'Friend added'
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    @friendship = current_user.inverted_friendships.reject_friendship(@user)
+    redirect_to users_path, notice: 'Invitation rejected'
+  end
 end
