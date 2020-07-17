@@ -12,14 +12,14 @@
   <p align="center">
      This is the repo for the webapp Stay In Touch in [stay-in-touch-by-kit-ed.herokuapp.com/](stay-in-touch-by-kit-ed.herokuapp.com/). This is a social media app where an authenticated user can interact with others, send friendship invitations and see only the posts of their friends. We made use of our diverse knowledge of rails in ActiveRecord, ActionController and RSpec for testing.
     <br />
-    <a href="https://github.com/kitpao/private-events"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/EdCrux/ror-social-scaffold"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/kitpao/private-events">View Demo</a>
+    <a href="https://github.com/EdCrux/ror-social-scaffold">View Demo</a>
     ·
-    <a href="https://github.com/kitpao/private-events/issues">Report Bug</a>
+    <a href="https://github.com/EdCrux/ror-social-scaffold/issues">Report Bug</a>
     ·
-    <a href="https://github.com/kitpao/private-events/issues">Request Feature</a>
+    <a href="https://github.com/EdCrux/ror-social-scaffold/issues">Request Feature</a>
   </p>
 </p>
 
@@ -97,12 +97,12 @@ For the test, click on the following [link](https://gitpod.io/github.com/kitpao/
 
 ## Roadmap
 
-See the [open issues](https://github.com/kitpao/private-events/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/EdCrux/ror-social-scaffold/issues) for a list of proposed features (and known issues).
 
 ## Contact
 <p align="center">
 
-  Project Link: [https://github.com/kitpao/private-events](https://github.com/kitpao/private-events)
+  Project Link: [https://github.com/EdCrux/ror-social-scaffold](https://github.com/kitpao/EdCrux/ror-social-scaffold)
 
 <p align="center">
 
@@ -165,16 +165,16 @@ Give a ⭐️ if you like this project!
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/kitpao/private-events.svg?style=flat-square
-[contributors-url]: https://github.com/kitpao/private-events/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/kitpao/private-events.svg?style=flat-square
-[forks-url]: https://github.com/kitpao/private-events/network/members
-[stars-shield]: https://img.shields.io/github/stars/kitpao/private-events.svg?style=flat-square
-[stars-url]: https://github.com/kitpao/private-events/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kitpao/private-events.svg?style=flat-square
-[issues-url]: https://github.com/kitpao/private-events/issues
-[license-shield]: https://img.shields.io/github/license/kitpao/private-events.svg?style=flat-square
-[license-url]: https://github.com/kitpao/private-events/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/EdCrux/ror-social-scaffold.svg?style=flat-square
+[contributors-url]: https://github.com/EdCrux/ror-social-scaffold/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/EdCrux/ror-social-scaffold.svg?style=flat-square
+[forks-url]: https://github.com/EdCrux/ror-social-scaffold/network/members
+[stars-shield]: https://img.shields.io/github/stars/EdCrux/ror-social-scaffold.svg?style=flat-square
+[stars-url]: https://github.com/EdCrux/ror-social-scaffold/stargazers
+[issues-shield]: https://img.shields.io/github/issues/EdCrux/ror-social-scaffold.svg?style=flat-square
+[issues-url]: https://github.com/EdCrux/ror-social-scaffold/issues
+[license-shield]: https://img.shields.io/github/license/EdCrux/ror-social-scaffold.svg?style=flat-square
+[license-url]: https://github.com/EdCrux/ror-social-scaffold/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kitzia-paola-vidal/
 [linkedin-shield2]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
