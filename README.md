@@ -10,7 +10,7 @@
 <p align="center">
   <h2 align="center"> Social media app: Stay In Touch</h2>
   <p align="center">
-     This is the repo for the webapp Stay In Touch in [stay-in-touch-by-kit-ed.herokuapp.com](http://stay-in-touch-by-kit-ed.herokuapp.com/). This is a social media app where a user can sign upn authenticated user can interact with others, send friendship invitations and see only the posts of their friends. We made use of our diverse knowledge of rails in ActiveRecord, ActionController and RSpec for testing.
+     This is the repo for the webapp Stay In Touch in http://stay-in-touch-by-kit-ed.herokuapp.com/. This is a social media app where a user can sign up authenticated user can interact with others, send friendship invitations and see only the posts of their friends. We made use of our diverse knowledge of rails in ActiveRecord, ActionController and RSpec for testing.
     <br />
     <a href="https://github.com/EdCrux/ror-social-scaffold"><strong>Explore the docs »</strong></a>
     <br />
@@ -45,22 +45,22 @@ The Entity Relation Diagram for this project was the following,
 <img align="center" src="doc/erd.png" height="600" />
 
 In this project we planned all the associations needed for the funtionality and ensured the following features: 
-   * As a guest user:
-    - Able to create account/log in.
-    - Only see “Sign in” and “Sign out” page.
+* As a guest user:
+  * Able to create account/log in.
+  * Only see “Sign in” and “Sign out” page.
 
-   * As a logged-in user:
-    - Access all users list.
-    - Access selected user page with their user name and all posts written by them (the most recent posts on the top).
-    - Send a friendship invitation.
-    - Access button “Invite to friendship” next to the name of user who is not my friend yet - on both users’ list and single user page.
-    - Access pending friendship invitations sent to me from other users.
-    - Accept or reject friendships invitation.
-    - Create new posts (text only).
-    - Like/dislike posts (but I can like single post only once).
-    - Add comments to posts.
-    - Access “Timeline” page with posts (with number of likes and comments) written by me and all my friends (the most recent posts on the top).
-    - Timeline page should be the root page of the app.
+ * As a logged-in user:
+    * Access all users list.
+    * Access selected user page with their user name and all posts written by them (the most recent posts on the top).
+    * Send a friendship invitation.
+    * Access button “Invite to friendship” next to the name of user who is not my friend yet - on both users’ list and single user page.
+    * Access pending friendship invitations sent to me from other users.
+    * Accept or reject friendships invitation.
+    * Create new posts (text only).
+    * Like/dislike posts (but I can like single post only once).
+    * Add comments to posts.
+    * Access “Timeline” page with posts (with number of likes and comments) written by me and all my friends (the most recent posts on the top).
+    * Timeline page should be the root page of the app.
 
 ### Built With
 The project was developed using the following technologies:
@@ -70,23 +70,24 @@ The project was developed using the following technologies:
 - [DEVISE gem](https://github.com/heartcombo/devise)
 - [RSPEC gem](https://github.com/rspec/rspec-rails)
 - [POSTGRES >=v10.12](www.postgresql.org)
+- [HEROKU](https://heroku.com)
 
 
 ## Instalation Guide
 Click on the following [link](https://gitpod.io/github.com/EdCrux/ror-social-scaffold),
 
-1.- Wait for the workspace to load and then click on the terminal, type `brew install postgresql` and hit enter to install postgres for database
-2.- After it finishes, You will be promptd with a message: "A service is available on port 8334", select: "Make Public"
-3.- Copy and paste the last line you get from your terminal, it should be something like `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start` and hit enter to start the postgres server
-4.- After it finishes, You will be promptd with a message: "A service is available on port 5432", select: "Make Public" and close the new notification
-5.- After its done, type `bundle install` to install all required gems
-6.- Go to config/database.yml and double click to edit
-7.- Go to line 22 and 23 and uncomment them, save with ctrl + s
-8.- Run `rails db:create` and hit enter
-9.- Run `rails db:migrate` and hit enter
-10.- Run `rails c` and hit enter to interact with the objects in the console (User, Comment, Friendship, Like, Post: see the schema for more information)
+1. Wait for the workspace to load and then click on the terminal, type `brew install postgresql` and hit enter to install postgres for database
+2. After it finishes, You will be promptd with a message: "A service is available on port 8334", select: "Make Public"
+3. Copy and paste the last line you get from your terminal, it should be something like `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start` and hit enter to start the postgres server
+4. After it finishes, You will be promptd with a message: "A service is available on port 5432", select: "Make Public" and close the new notification
+5. After its done, type `bundle install` to install all required gems
+6. Go to config/database.yml and double click to edit
+7. Go to line 22 and 23 and uncomment them, save with ctrl + s
+8. Run `rails db:create` and hit enter
+9. Run `rails db:migrate` and hit enter
+10. Run `rails c` and hit enter to interact with the objects in the console (User, Comment, Friendship, Like, Post: see the schema for more information)
 
--> or see the direct page working on https://stay-in-touch-by-kit-ed.herokuapp.com/ and you can test it directly in the browser!!
+-> or see the direct page working on https://stay-in-touch-by-kit-ed.herokuapp.com/ and you can use the page directly in the browser!!
 
 ## Test
 
