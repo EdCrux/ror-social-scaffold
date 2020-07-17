@@ -10,7 +10,7 @@
 <p align="center">
   <h2 align="center"> Social media app: Stay In Touch</h2>
   <p align="center">
-     This is the repo for the webapp Stay In Touch in [stay-in-touch-by-kit-ed.herokuapp.com/](stay-in-touch-by-kit-ed.herokuapp.com/). This is a social media app where an authenticated user can interact with others, send friendship invitations and see only the posts of their friends. We made use of our diverse knowledge of rails in ActiveRecord, ActionController and RSpec for testing.
+     This is the repo for the webapp Stay In Touch in [stay-in-touch-by-kit-ed.herokuapp.com](http://stay-in-touch-by-kit-ed.herokuapp.com/). This is a social media app where a user can sign upn authenticated user can interact with others, send friendship invitations and see only the posts of their friends. We made use of our diverse knowledge of rails in ActiveRecord, ActionController and RSpec for testing.
     <br />
     <a href="https://github.com/EdCrux/ror-social-scaffold"><strong>Explore the docs »</strong></a>
     <br />
@@ -37,8 +37,8 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-<em>Click on the image to visit the live version! available at [stay-in-touch-by-kit-ed.herokuapp.com/](stay-in-touch-by-kit-ed.herokuapp.com/)</em>
-[![Product Name Screen Shot][product-screenshot]](stay-in-touch-by-kit-ed.herokuapp.com/)
+<em>Click on the image to visit the live version! available at [stay-in-touch-by-kit-ed.herokuapp.com/](https://stay-in-touch-by-kit-ed.herokuapp.com/)</em>
+[![Product Name Screen Shot][product-screenshot]](https://stay-in-touch-by-kit-ed.herokuapp.com/)
 
 
 The Entity Relation Diagram for this project was the following,
@@ -75,25 +75,26 @@ The project was developed using the following technologies:
 ## Instalation Guide
 Click on the following [link](https://gitpod.io/github.com/EdCrux/ror-social-scaffold),
 
-* Wait for the workspace to load and then click on the terminal, type `brew install postgresql` and hit enter to install postgres for database
-* After it finishes, copy and paste the last line you get from your terminal, it should be something like `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start` and hit enter to start the postgres server
-* After its done, type `bundle install` to install all required gems
-* Go to "Open Ports" tab near the terminal and make both servers public
-* Go to config/database.yml and double click to edit
-* Go to line 22 and 23 and uncomment them
-* Then `yarn install --check-files` and hit enter
-* Run `rails db:migrate` and hit enter
-* Run `rails c` and hit enter to interact with the objects in the console (User, Event, Invitation: see the schema for more information)
+1.- Wait for the workspace to load and then click on the terminal, type `brew install postgresql` and hit enter to install postgres for database
+2.- After it finishes, You will be promptd with a message: "A service is available on port 8334", select: "Make Public"
+3.- Copy and paste the last line you get from your terminal, it should be something like `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start` and hit enter to start the postgres server
+4.- After it finishes, You will be promptd with a message: "A service is available on port 5432", select: "Make Public" and close the new notification
+5.- After its done, type `bundle install` to install all required gems
+6.- Go to config/database.yml and double click to edit
+7.- Go to line 22 and 23 and uncomment them, save with ctrl + s
+8.- Run `rails db:create` and hit enter
+9.- Run `rails db:migrate` and hit enter
+10.- Run `rails c` and hit enter to interact with the objects in the console (User, Comment, Friendship, Like, Post: see the schema for more information)
 
--> or see the direct page working on https://floating-chamber-00036.herokuapp.com/ and you can test it directly in the browser!!
+-> or see the direct page working on https://stay-in-touch-by-kit-ed.herokuapp.com/ and you can test it directly in the browser!!
 
 ## Test
 
-For the test, click on the following [link](https://gitpod.io/github.com/kitpao/my_enumerable_methods),
+For the test, click on the following [link](https://gitpod.io/github.com/EdCrux/ror-social-scaffold),
 
-* Click on the console and type `gem install rspec` then press enter to begin the instalation process
-* Once the process is done, type `rspec` and press enter to see the 67 test for this game
-* You can see the test files by clicking on the left panel spec/my_methods_spec.rb
+* Follow steps 1 to 9 from the [Instalation Guide](#instalation-guide) above
+* Once you are done, type `rspec --format documentation` and press enter to see the 35 test for this project
+* You can see the test files by clicking on the left panel in the folder spec and checking the files inside models and integrations
 
 ## Roadmap
 
@@ -179,5 +180,5 @@ Give a ⭐️ if you like this project!
 [linkedin-url]: https://www.linkedin.com/in/kitzia-paola-vidal/
 [linkedin-shield2]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url2]: https://www.linkedin.com/in/edcrux/
-[product-screenshot]: app/assets/images/desktop.png
+[product-screenshot]: app/assets/images/screenshot.png
 [mobile]: app/assets/images/phone.png
