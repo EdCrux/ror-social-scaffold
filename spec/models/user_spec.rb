@@ -26,74 +26,85 @@ RSpec.describe User, type: :model do
       should have_many(:friendships).dependent(:destroy)
     end
 
-    it 'should have many inverse_friendships' do
-      should have_many(:inverse_friendships)
+    it 'should have many confirmed_friendships' do
+      should have_many(:confirmed_friendships)
         .class_name('Friendship')
-        .with_foreign_key('friend_id')
-        .dependent(:destroy)
+        .conditions(confirmed: true)
+    end
+
+    it 'should have many friends through confirmed_friendships' do
+      should have_many(:friends).through(:confirmed_friendships)
+    end
+
+    it 'should have many pending_friendships' do
+      should have_many(:pending_friendships)
+        .conditions(confirmed: false)
+        .class_name('Friendship')
+        .with_foreign_key(:user_id)
+    end
+
+    it 'should have many pending_friends, through pending_friendships' do
+      should have_many(:pending_friends)
+        .through(:pending_friendships)
+        .source(:friend)
+    end
+
+    it 'should have many inverted_friendships' do
+      should have_many(:inverted_friendships)
+        .conditions(confirmed: false)
+        .class_name('Friendship')
+        .with_foreign_key(:friend_id)
+    end
+
+    it 'should have many friend_requests' do
+      should have_many(:friend_requests)
+        .through(:inverted_friendships)
+        .source(:user)
     end
   end
 
-  describe 'methods' do
-    let!(:user1) do
-      User.create!(
-        email: 'fake@email.com',
-        password: 'password',
-        name: 'fake_test'
-      )
+  let!(:sender) do
+    User.create!(
+      email: 'fake@email.com',
+      password: 'password',
+      name: 'fake_test'
+    )
+  end
+
+  let!(:receiver) do
+    User.create!(
+      email: 'test@email.com',
+      password: 'test123',
+      name: 'friend_test'
+    )
+  end
+
+  let!(:friendship) do
+    Friendship.create!(
+      user: sender,
+      friend: receiver
+    )
+  end
+
+  describe 'Actions for users' do
+    it '#friend? -> false' do
+      expect(receiver.friend?(sender)).to be(false)
     end
 
-    let!(:user2) do
-      User.create!(
-        email: 'test@email.com',
-        password: 'test123',
-        name: 'friend_test'
-      )
+    it '#pending_friend? -> true' do
+      expect(sender.pending_friends?(receiver)).to be(true)
     end
-    let!(:friendship) do
-      Friendship.create!(
-        user: user1,
-        friend: user2
-      )
+
+    it '#pending_friend? -> false' do
+      expect(receiver.pending_friends?(sender)).to be(false)
     end
-    describe 'Actions for users' do
-      it '#friends -> empty array' do
-        expect(user1.friends).to be_empty
-      end
 
-      it '#friends -> not empty array' do
-        user2.confirm_friend(user1)
-        expect(user1.friends).to_not be_empty
-      end
+    it '#friend_requests? -> true' do
+      expect(receiver.friend_requests?(sender)).to be(true)
+    end
 
-      it '#pending_friends -> not empty array' do
-        expect(user1.pending_friends).to_not be_empty
-      end
-
-      it '#pending_friends -> be empty' do
-        expect(user2.pending_friends).to be_empty
-      end
-
-      it '#friend_requests -> not empty' do
-        expect(user2.friend_requests).to_not be_empty
-      end
-      it '#friend_requests -> empty' do
-        user2.confirm_friend(user1)
-        expect(user2.friend_requests).to be_empty
-      end
-
-      it '#confirm_friend' do
-        expect(user2.confirm_friend(user1)).to be(true)
-      end
-
-      it '#friend? -> false' do
-        expect(user2.friend?(user1)).to be(false)
-      end
-
-      it '#friend? -> true' do
-        user2.confirm_friend(user1)
-        expect(user1.friend?(user2)).to be(true)
-      end
+    it '#friend_requests? -> false' do
+      expect(sender.friend_requests?(receiver)).to be(false)
     end
   end
 end

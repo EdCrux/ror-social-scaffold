@@ -41,16 +41,16 @@ module ApplicationHelper
   end
 
   def invitation_action_links(user)
-    if current_user.pending_friends?(user)
-      content_tag(:span, 'You already sent an invitation')
-    elsif current_user.friend_requests?(user)
-      link_to('Accept invitation', user_path(user), method: :patch) +
-        content_tag(:span, ' | ') +
-        link_to('Reject invitation', user_path(user), method: :delete)
+    if current_user == user
+      content_tag(:span, 'Your profile')
     elsif current_user.friend?(user)
       content_tag(:span, 'Is your friend')
-    elsif current_user == user
-      content_tag(:span, 'Your profile')
+    elsif current_user.friend_requests?(user)
+      link_to('Accept invitation', friendship_path(user), method: :patch) +
+        content_tag(:span, ' | ') +
+        link_to('Reject invitation', friendship_path(user), method: :delete)
+    elsif current_user.pending_friends?(user)
+      content_tag(:span, 'You already sent an invitation')
     else
       link_to 'Send friendship invitation', friendships_path(friend_id: user.id), method: :post
     end

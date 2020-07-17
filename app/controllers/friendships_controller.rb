@@ -16,4 +16,16 @@ class FriendshipsController < ApplicationController
       redirect_to users_path, alert: 'You cannot request this friendship'
     end
   end
+
+  def update
+    @user = User.find(params[:id])
+    @friendship = current_user.inverted_friendships.confirm_friendship(@user)
+    redirect_to users_path, notice: 'Friend added'
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @friendship = current_user.inverted_friendships.reject_friendship(@user)
+    redirect_to users_path, notice: 'Invitation rejected'
+  end
 end
