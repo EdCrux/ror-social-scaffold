@@ -44,7 +44,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
